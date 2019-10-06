@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <style>
+        body {
+            background-color: #ababab;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            border: 100px 100px 100px 100px;
+        }
+        h1{
+            color:white;
+            text-align: center;
+        }
+        .heading{
+            background-color: darkolivegreen;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        h3{
+            color: black;
+            text-align:center;
+            border-top: 500px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        .wrapper {
+            text-align: center;
+        }
+        button{
+            background-color: aquamarine;
+            
+        }
+        
+    </style>
+    <title>Index page</title>
+</head>
+<body>
+    <div class='container'>
+        <div class='heading'>
+            <h1>CHUCK NORRIS FUN FACTS</h1>
+        </div>
+        <div class='fact'>
+            <h3 id='facto'></h3>
+          <script>
+
+              function getFact(){
+                //Returns a promise
+                fetch('https://api.chucknorris.io/jokes/random')
+                    .then(res => {
+                    return res.json();
+                    })
+                    .then(data => {
+                        console.log(data.value);
+                        document.getElementById('facto').innerText = data.value;
+                        //console.log(document.getElementById("facto").innerText);
+                    })
+                    .catch(err => console.log('some error'));
+                }   
+                getFact();
+            </script>
+        </div>
+        <div class='wrapper'>
+                <button onclick="getFact()"> Next Fact</button>
+        </div>
+       
+    </div>
+
+</body>
+</html>
